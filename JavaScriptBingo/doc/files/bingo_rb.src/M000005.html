@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>draw_card (bingo.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File bingo.rb, line 36</span>
+<span class="ruby-keyword kw">def</span> <span class="ruby-identifier">draw_card</span>(<span class="ruby-identifier">words</span>)
+  <span class="ruby-identifier">page_width</span> = <span class="ruby-identifier">bounds</span>.<span class="ruby-identifier">width</span>
+  <span class="ruby-identifier">left_edge</span> = (<span class="ruby-identifier">bounds</span>.<span class="ruby-identifier">width</span> <span class="ruby-operator">-</span> <span class="ruby-constant">CELL_WIDTH</span><span class="ruby-operator">*</span><span class="ruby-value">5</span>)<span class="ruby-operator">/</span><span class="ruby-value">2</span>
+  <span class="ruby-identifier">bounding_box</span> [<span class="ruby-identifier">left_edge</span>,<span class="ruby-value">0</span>], <span class="ruby-identifier">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">CELL_WIDTH</span><span class="ruby-operator">*</span><span class="ruby-value">5</span> <span class="ruby-keyword kw">do</span>
+    <span class="ruby-identifier">start</span> = [<span class="ruby-value">600</span>,<span class="ruby-value">50</span>]
+    <span class="ruby-node">%w(J a v a S c r i p t)</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">letter</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+      <span class="ruby-comment cmt">#draw_box(letter, (5*CELL_WIDTH*index)/11, -100, true, {:size =&gt; 20, :style =&gt; :bold})</span>
+    <span class="ruby-keyword kw">end</span>
+    
+  <span class="ruby-identifier">bounding_box</span> [<span class="ruby-value">0</span>, <span class="ruby-value">700</span>], <span class="ruby-identifier">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5</span><span class="ruby-operator">*</span><span class="ruby-constant">CELL_WIDTH</span> <span class="ruby-keyword kw">do</span>
+    <span class="ruby-identifier">text</span> <span class="ruby-value str">&quot;JavaScript Bingo&quot;</span>, <span class="ruby-identifier">:align</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:center</span>, <span class="ruby-identifier">:size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">24</span>, <span class="ruby-identifier">:style</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:bold</span>, <span class="ruby-identifier">:character_spacing</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">4</span>
+    <span class="ruby-identifier">stroke_horizontal_rule</span>
+  <span class="ruby-keyword kw">end</span>
+  
+    <span class="ruby-node">%w(B I N G O)</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">letter</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">draw_box</span>(<span class="ruby-identifier">letter</span>, <span class="ruby-constant">CELL_WIDTH</span><span class="ruby-operator">*</span><span class="ruby-identifier">index</span>, <span class="ruby-value">-60</span>, <span class="ruby-keyword kw">false</span>, {<span class="ruby-identifier">:size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">20</span>, <span class="ruby-identifier">:style</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:bold</span>})
+    <span class="ruby-keyword kw">end</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">4</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+      (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">4</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">col</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">word</span> = <span class="ruby-identifier">get_word</span>(<span class="ruby-identifier">words</span>,<span class="ruby-identifier">row</span>,<span class="ruby-identifier">col</span>)
+        <span class="ruby-identifier">x</span> = <span class="ruby-constant">CELL_WIDTH</span><span class="ruby-operator">*</span><span class="ruby-identifier">row</span>
+        <span class="ruby-identifier">y</span> = <span class="ruby-constant">CELL_HEIGHT</span><span class="ruby-operator">*</span><span class="ruby-identifier">col</span>
+        <span class="ruby-identifier">draw_box</span>(<span class="ruby-identifier">word</span>,<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">column_box</span>([<span class="ruby-value">0</span>,<span class="ruby-identifier">cursor</span><span class="ruby-operator">-</span><span class="ruby-value">100</span>], <span class="ruby-identifier">:columns</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">:align</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:center</span>, <span class="ruby-identifier">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">bounds</span>.<span class="ruby-identifier">width</span>) <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">text</span> <span class="ruby-constant">WORDS</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">draw_footer</span>
+    
+  <span class="ruby-keyword kw">end</span>
+<span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

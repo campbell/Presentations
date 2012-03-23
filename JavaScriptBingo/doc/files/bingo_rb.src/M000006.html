@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>draw_box (bingo.rb)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File bingo.rb, line 69</span>
+<span class="ruby-keyword kw">def</span> <span class="ruby-identifier">draw_box</span>(<span class="ruby-identifier">str</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">stroke</span> = <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">bounding_box</span> [<span class="ruby-identifier">x</span>, <span class="ruby-value">600</span><span class="ruby-operator">-</span><span class="ruby-identifier">y</span>], <span class="ruby-identifier">:height</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">CELL_HEIGHT</span>, <span class="ruby-identifier">:width</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">CELL_WIDTH</span> <span class="ruby-keyword kw">do</span>
+    <span class="ruby-identifier">text</span> <span class="ruby-identifier">str</span>, <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>({<span class="ruby-identifier">:align</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:center</span>, <span class="ruby-identifier">:valign</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:center</span>})
+    <span class="ruby-identifier">stroke_bounds</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">stroke</span>
+  <span class="ruby-keyword kw">end</span>
+<span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
