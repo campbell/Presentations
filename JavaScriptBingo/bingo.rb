@@ -1,9 +1,15 @@
+# This is a quick hack to create Bingo cards using Javascript terms.
 require 'rubygems'
 require 'prawn'
+
+CELL_HEIGHT = 70
+CELL_WIDTH = 100
 
 f = File.new 'words.txt'
 s = f.read
 ALL_WORDS = s.split(/\n/).select{|x| x.length > 0}
+
+
 
 def get_words
   words = []
@@ -71,8 +77,6 @@ def draw_footer
 end
 
 WORDS = get_words
-CELL_HEIGHT = 70
-CELL_WIDTH = 100
 
 Prawn::Document.generate("bingo-cards.pdf") do
   (0..99).each do |page|
