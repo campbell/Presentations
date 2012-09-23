@@ -1,0 +1,11 @@
+Installing Coffeescript
+
+If you just want to try coffeescript out, go here:
+http://coffeescript.org/
+then click on the "try coffeescript" tab
+
+You don't need to install it for the workshop, but if you'd like to:
+- Start by installing node.js - either go to the website (http://nodejs.org/) and click install or use the binaries from the resources/node_packages directory
+- Then at a command line run "npm install --global coffee-script" - you *may* need to run as super user (on *nix including mac's that'd be "sudo npm install --global coffee-script")
+- To verify that the coffee executable is on the path, run coffee -v from the command line
+
